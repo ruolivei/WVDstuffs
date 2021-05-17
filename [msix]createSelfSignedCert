@@ -1,0 +1,5 @@
+$cert = New-SelfSignedCertificate -CertStoreLocation Cert:\LocalMachine\My -DnsName rudnei.com -Type CodeSigningCert -Subject rudnei.com -Verbose
+$cert
+$secPassword = ConvertTo-SecureString -String 'p@ssw0rd!' -Force -AsPlainText
+$certPath = "Cert:\LocalMachine\My\$($Cert.Thumbprint)"
+Export-PfxCertificate -Cert $certPath -FilePath 'C:\temp\MSAzureAcademy-CodeSigning.pfx' -Password $secPassword
